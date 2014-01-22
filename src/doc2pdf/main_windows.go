@@ -55,6 +55,9 @@ func export(w http.ResponseWriter, r *http.Request) {
 
 func main() {
     port := "9000"
+    if len(os.Args) > 1 {
+        port = os.Args[1]
+    }
     http.HandleFunc("/", export)
     log.Println("Server is listening on port " + port)
     err := http.ListenAndServe(":"+port, nil)
